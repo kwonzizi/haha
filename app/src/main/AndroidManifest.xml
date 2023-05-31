@@ -15,6 +15,11 @@
         <activity
             android:name=".MainActivity"
             android:exported="true">
+        </activity>
+<!--        시작 시 로그인 화면부터 뜨게 함-->
+        <activity
+            android:name=".LoginActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

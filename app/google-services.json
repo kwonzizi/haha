@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "214277382494",
+    "project_id": "dingdong-fe84a",
+    "storage_bucket": "dingdong-fe84a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:214277382494:android:c178d2af15e7dd5278efcf",
+        "android_client_info": {
+          "package_name": "com.acha.haha"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "214277382494-ag23kheb366pmsc2ho1sltctisa03t0p.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.acha.haha",
+            "certificate_hash": "c22d00da2a33a23ef343c697c7cf1cf86c9330c1"
+          }
+        },
+        {
+          "client_id": "214277382494-c628fogpbpcr53i7r2950ek2k4hs8o6p.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDDmpVBKA788u0eLo75_dOkTz0JECzKTkM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "214277382494-c628fogpbpcr53i7r2950ek2k4hs8o6p.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
