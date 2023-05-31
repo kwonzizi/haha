@@ -1,5 +1,4 @@
 package com.acha.haha
-
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -35,10 +34,10 @@ class LoginActivity : AppCompatActivity() {
         }
     }
 
-    override fun onDestroy(){
-        super.onDestroy()
-        firebaseAuthSignOut()
-    }
+//    override fun onDestroy(){
+//        super.onDestroy()
+//        firebaseAuthSignOut()
+//    }
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
@@ -57,6 +56,7 @@ class LoginActivity : AppCompatActivity() {
         auth.signInWithCredential(credential)
             .addOnCompleteListener(this){ task ->
                 if (task.isSuccessful){
+                    startActivity(Intent(this, LogoutActivity::class.java))
                     val user = auth.currentUser
                     user?.let{
                         val name = user.displayName
@@ -75,7 +75,7 @@ class LoginActivity : AppCompatActivity() {
             }
     }
 
-    private fun firebaseAuthSignOut(){
-        Firebase.auth.signOut()
-    }
+//    private fun firebaseAuthSignOut(){
+//        Firebase.auth.signOut()
+//    }
 }
