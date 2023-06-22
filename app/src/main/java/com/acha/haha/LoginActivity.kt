@@ -34,10 +34,6 @@ class LoginActivity : AppCompatActivity() {
         }
     }
 
-//    override fun onDestroy(){
-//        super.onDestroy()
-//        firebaseAuthSignOut()
-//    }
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
@@ -50,13 +46,12 @@ class LoginActivity : AppCompatActivity() {
             }
         }
     }
-
     private fun firebaseAuthWithGoogle(idToken: String){
         val credential = GoogleAuthProvider.getCredential(idToken, null)
         auth.signInWithCredential(credential)
             .addOnCompleteListener(this){ task ->
                 if (task.isSuccessful){
-                    startActivity(Intent(this, LogoutActivity::class.java))
+                    startActivity(Intent(this, MainActivity::class.java))
                     val user = auth.currentUser
                     user?.let{
                         val name = user.displayName
@@ -74,8 +69,4 @@ class LoginActivity : AppCompatActivity() {
                 }
             }
     }
-
-//    private fun firebaseAuthSignOut(){
-//        Firebase.auth.signOut()
-//    }
 }

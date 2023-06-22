@@ -20,7 +20,7 @@ class MainActivity : AppCompatActivity() {
     }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_login)
+        setContentView(R.layout.activity_main)
 
         supportFragmentManager.beginTransaction().add(frame.id, FirstFragment()).commit()
 
