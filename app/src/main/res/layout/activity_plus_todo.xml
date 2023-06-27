@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AddPlanActivity">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorPrimary"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/plus_plan_subject"
+            android:textColor="@color/white"
+            android:textSize="30sp"
+            android:textStyle="bold" />
+
+    </androidx.appcompat.widget.Toolbar>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/plus_plan_context"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/plus_plan_context"
+            android:textSize="30sp" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <TextView
+        android:id="@+id/plus_plan_date"
+        android:layout_width="70dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="40dp"
+        android:gravity="center_vertical"
+        android:text="@string/plus_plan_date"
+        android:textSize="30sp"
+        app:layout_constraintStart_toEndOf="@id/plus_plan_clock"
+        app:layout_constraintTop_toBottomOf="@id/textInputLayout" />
+
+    <TextView
+        android:id="@+id/plus_date_text"
+        android:layout_width="100dp"
+        android:layout_height="60dp"
+        android:textSize="30sp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="40dp"
+        app:layout_constraintStart_toEndOf="@+id/plus_plan_date"
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout"/>
+
+    <Button
+        android:id="@+id/plus_date_btn"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginLeft="40dp"
+        app:layout_constraintStart_toEndOf="@+id/plus_date_text"
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout"/>
+
+
+
+    <ImageView
+        android:id="@+id/plus_plan_clock"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="40dp"
+        android:contentDescription="@string/description_date"
+        android:src="@drawable/baseline_access_time_24"
+        app:layout_constraintEnd_toEndOf="@id/plus_pan_bell_image"
+        app:layout_constraintTop_toBottomOf="@id/textInputLayout" />
+
+    <View
+        android:id="@+id/view_divider_product_1"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="10dp"
+        android:background="@color/black"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/plus_plan_clock" />
+
+
+    <!--    app:layout_constraintEnd_toStartOf="@+id/plus_plan_date"-->
+    <!--    app:layout_constraintHorizontal_bias="0.0"-->
+
+    <TextView
+        android:id="@+id/plus_plan_repeat"
+        android:layout_width="300dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="30dp"
+        android:gravity="center_vertical"
+        android:text="@string/plus_plan_repeat"
+        android:textSize="30sp"
+        app:layout_constraintStart_toEndOf="@id/plus_plan_repeat_image"
+        app:layout_constraintTop_toBottomOf="@id/view_divider_product_1" />
+
+    <ImageView
+        android:id="@+id/plus_plan_repeat_image"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="30dp"
+        android:contentDescription="@string/description_repeat"
+        android:src="@drawable/baseline_repeat_24"
+        app:layout_constraintEnd_toEndOf="@id/plus_plan_clock"
+        app:layout_constraintStart_toStartOf="@+id/plus_plan_clock"
+        app:layout_constraintTop_toBottomOf="@id/view_divider_product_1" />
+
+    <View
+        android:id="@+id/view_divider_product_2"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="10dp"
+        android:background="@color/black"
+        app:layout_constraintStart_toStartOf="@+id/plus_plan_clock"
+        app:layout_constraintTop_toBottomOf="@id/plus_plan_repeat" />
+
+
+    <ImageView
+        android:id="@+id/plus_pan_bell_image"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="30dp"
+        android:contentDescription="@string/description_bell"
+        android:src="@drawable/baseline_alarm_on_24"
+        app:layout_constraintEnd_toEndOf="@id/plus_plan_repeat_image"
+        app:layout_constraintStart_toStartOf="@+id/plus_plan_repeat"
+        app:layout_constraintTop_toBottomOf="@id/view_divider_product_2" />
+
+
+    <TextView
+        android:id="@+id/plus_plan_notification"
+        android:layout_width="300dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="30dp"
+        android:gravity="center_vertical"
+        android:text="@string/plus_plan_notification"
+        android:textSize="30sp"
+        app:layout_constraintStart_toEndOf="@id/plus_pan_bell_image"
+        app:layout_constraintTop_toBottomOf="@id/view_divider_product_2" />
+
+    <View
+        android:id="@+id/view_divider_product_3"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:layout_marginTop="10dp"
+        android:background="@color/black"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/plus_plan_notification" />
+
+
+    <Button
+        android:id="@+id/plus_plan_delete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:text="@string/plus_plan_delete"
+        android:textColor="@color/white"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/view_divider_product_3" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

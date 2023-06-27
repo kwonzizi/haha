@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.RelativeLayout
 import androidx.fragment.app.Fragment
+import com.acha.haha.Todo.TodoFragment
 import com.acha.haha.databinding.ActivityMainBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
@@ -20,7 +21,7 @@ class MainActivity : AppCompatActivity() {
     }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_login)
+        setContentView(R.layout.activity_main)
 
         supportFragmentManager.beginTransaction().add(frame.id, FirstFragment()).commit()
 
@@ -58,4 +59,6 @@ class MainActivity : AppCompatActivity() {
             supportFragmentManager.beginTransaction().replace(frame.id, fragment).commit()
 
         }
+
+
     }

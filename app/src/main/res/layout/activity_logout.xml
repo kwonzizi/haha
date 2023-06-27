@@ -8,10 +8,21 @@
 
     <Button
         android:id="@+id/sign_out_button"
-        tools:ignore="MissingConstraints"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Logout"
-        tools:layout_editor_absoluteX="159dp"
-        tools:layout_editor_absoluteY="341dp" />
+        android:text="예"
+        android:layout_gravity = "center|center_horizontal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+    <Button
+        android:id="@+id/no_button"
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="아니오"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/sign_out_button" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
