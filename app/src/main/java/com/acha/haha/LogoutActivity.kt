@@ -35,5 +35,13 @@ class LogoutActivity : AppCompatActivity() {
             logoutIntent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
             startActivity(logoutIntent)
         }
+
+        var no_out_button = findViewById<Button>(R.id.no_button)
+
+        no_out_button.setOnClickListener {
+
+            var noIntent = Intent (this, MainActivity::class.java)
+            startActivity(noIntent)
+        }
     }
 }
