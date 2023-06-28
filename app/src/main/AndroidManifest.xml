@@ -26,6 +26,10 @@
             android:name=".SettingsFragment"
             android:exported="true">
         </activity>
+        <activity
+            android:name=".Register"
+            android:exported="true">
+        </activity>
 <!--        시작 시 로그인 화면부터 뜨게 함-->
         <activity
             android:name=".LoginActivity"

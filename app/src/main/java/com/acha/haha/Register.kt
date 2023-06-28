@@ -36,18 +36,24 @@ class Register : AppCompatActivity() {
 
     private fun createUser(email: String, password: String) {
         auth.createUserWithEmailAndPassword(email, password)
-            .addOnCompleteListener { task ->
+            .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
                     Toast.makeText(this, "회원가입 성공", Toast.LENGTH_SHORT).show()
                     val user = auth.currentUser
                     updateUI(user)
+                    var signupIntent = Intent (this, LoginActivity::class.java)
+                    startActivity(signupIntent)
                 } else {
                     Toast.makeText(this, "회원가입 실패", Toast.LENGTH_SHORT).show()
                     updateUI(null)
+                    var signupIntent = Intent (this, LoginActivity::class.java)
+                    startActivity(signupIntent)
                 }
             }
             .addOnFailureListener {
                 Toast.makeText(this, "회원가입 실패", Toast.LENGTH_SHORT).show()
+                var signupIntent = Intent (this, LoginActivity::class.java)
+                startActivity(signupIntent)
             }
     }
 

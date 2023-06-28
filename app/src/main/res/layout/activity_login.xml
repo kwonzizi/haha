@@ -49,6 +49,7 @@
         android:layout_marginBottom="16dp">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/id_EditText"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:hint="ID"></com.google.android.material.textfield.TextInputEditText>
@@ -61,6 +62,8 @@
         android:layout_marginBottom="16dp">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/password_EditText"
+            android:inputType="textPassword"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:hint="Password"></com.google.android.material.textfield.TextInputEditText>
@@ -80,24 +83,21 @@
             android:layout_weight="5"
             android:text="아이디/비밀번호 찾기"></TextView>
 
-
-        <TextView
+        <Button
+            android:id="@+id/regi_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_weight="5"
-            android:text="회원가입"></TextView>
-
+            android:text="회원가입" />
 
     </LinearLayout>
 
-
     <Button
+        android:id="@+id/log_in_button"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:text="Log in">
-
-    </Button>
+        android:text="Log in" />
 
     <com.google.android.gms.common.SignInButton
         android:id="@+id/sign_in_button"

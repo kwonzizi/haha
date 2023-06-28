@@ -3,6 +3,9 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.widget.Button
+import android.widget.EditText
+import android.widget.Toast
 import com.google.android.gms.auth.api.signin.*
 import com.google.android.gms.common.SignInButton
 import com.google.android.gms.common.api.ApiException
@@ -32,6 +35,20 @@ class LoginActivity : AppCompatActivity() {
             var signInIntent = googleSignInClient!!.signInIntent
             startActivityForResult(signInIntent, RC_SIGN_IN)
         }
+
+        var register_button = findViewById<Button>(R.id.regi_button)
+
+        register_button.setOnClickListener {
+            var regiIntent = Intent (this, Register::class.java)
+            startActivity(regiIntent)
+        }
+
+        var loginButton = findViewById<Button>(R.id.log_in_button)
+        var idEditText = findViewById<EditText>(R.id.id_EditText)
+        var passwordEditText = findViewById<EditText>(R.id.password_EditText)
+        loginButton.setOnClickListener {
+            signIn(idEditText.text.toString(),passwordEditText.text.toString())
+        }
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -45,6 +62,10 @@ class LoginActivity : AppCompatActivity() {
             } catch (e: ApiException) {
             }
         }
+    }
+    public override fun onStart() {
+        super.onStart()
+        moveMainPage(auth?.currentUser)
     }
     private fun firebaseAuthWithGoogle(idToken: String){
         val credential = GoogleAuthProvider.getCredential(idToken, null)
@@ -68,5 +89,34 @@ class LoginActivity : AppCompatActivity() {
                     Log.d("xxxx", "signInWithCredential:failure", task.exception)
                 }
             }
+    }
+    // 로그인
+    private fun signIn(email: String, password: String) {
+
+        if (email.isNotEmpty() && password.isNotEmpty()) {
+            auth?.signInWithEmailAndPassword(email, password)
+                ?.addOnCompleteListener(this) { task ->
+                    if (task.isSuccessful) {
+                        Toast.makeText(
+                            baseContext, "로그인에 성공하였습니다.",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                        moveMainPage(auth?.currentUser)
+                    } else {
+                        Toast.makeText(
+                            baseContext, "로그인에 실패하였습니다.",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    }
+                }
+        }
+    }
+
+    // 유저정보 넘겨주고 메인 액티비티 호출
+    fun moveMainPage(user: FirebaseUser?){
+        if( user!= null){
+            startActivity(Intent(this,MainActivity::class.java))
+            finish()
+        }
     }
 }
