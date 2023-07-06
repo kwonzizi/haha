@@ -12,16 +12,24 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.Haha"
+        android:theme="@style/Base.Theme.Haha"
         tools:targetApi="31">
 
 <!--        <activity-->
 <!--            android:name=".MainActivity"-->
 <!--            android:exported="true">-->
 <!--        </activity>-->
+
         <activity
             android:name=".AddPlanActivity"
-            android:exported="true">
+            android:exported="false"
+            android:parentActivityName=".MainActivity"/>
+
+        <activity
+            android:name=".Todo.AddTodoActivity"
+            android:exported="true"
+            android:parentActivityName=".MainActivity">
+
         </activity>
         <activity
             android:name=".LogoutActivity"
