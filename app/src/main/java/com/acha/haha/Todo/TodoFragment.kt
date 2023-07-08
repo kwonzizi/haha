@@ -1,6 +1,5 @@
 package com.acha.haha.Todo
 
-import android.content.Intent
 import android.os.Build
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -9,29 +8,39 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.annotation.RequiresApi
-import androidx.cardview.widget.CardView
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import com.acha.haha.AddPlanActivity
 import com.acha.haha.R
-import com.acha.haha.databinding.FragmentCalendarBinding
 import com.acha.haha.databinding.FragmentTodoBinding
-import com.google.android.material.floatingactionbutton.FloatingActionButton
 import java.time.DayOfWeek
-import java.time.LocalDate
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 import java.time.temporal.TemporalAdjusters
+import java.util.Calendar
 import java.util.Locale
 
-class TodoFragment : Fragment() {
+
+
+
+class TodoFragment : Fragment(){
 
     private var _binding : FragmentTodoBinding? = null
     private val binding get() = _binding!!
 
     lateinit var todoAdapter : TodoAdapter
-    private var todocalendarList = ArrayList<TodoCalendarVO>()
+    private var todoCalendarList = ArrayList<TodoCalendarVO>()
+
+    private val todoViewModel : TodoViewModel by viewModels()
+
+    private val eventAdapter : TodoEventAdapter by lazy { TodoEventAdapter() }
+
+    private var year : Int = 0
+    private var month : Int = 0
+    private var day : Int = 0
+
+
 
 
     companion object {
@@ -42,11 +51,28 @@ class TodoFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?): View? {
         _binding = FragmentTodoBinding.inflate(inflater, container, false)
+
+        _binding!!.todofabMain.setOnClickListener {
+            Toast.makeText(activity, "테스트", Toast.LENGTH_SHORT).show()
+
+        }
+        _binding!!.todoWeekContent.layoutManager = LinearLayoutManager(activity,LinearLayoutManager.VERTICAL,false)
+        _binding!!.todoWeekContent.adapter = eventAdapter
+
+
+        todoViewModel.readAllData.observe(viewLifecycleOwner, Observer {
+            eventAdapter.setData(it)
+        })
+
+
+
         val root: View = binding.root
+
 
         return root
 
     }
+
 
 
 
@@ -55,9 +81,9 @@ class TodoFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         var week_day : Array<String> = resources.getStringArray(R.array.todo_calendar_day)
-        todoAdapter = TodoAdapter(todocalendarList)
+        todoAdapter = TodoAdapter(todoCalendarList)
 
-        todocalendarList.apply{
+        todoCalendarList.apply{
             val dateFormat = DateTimeFormatter.ofPattern("dd").withLocale(Locale.forLanguageTag("ko"))
             val monthFormat = DateTimeFormatter.ofPattern("yyyy년 MM월").withLocale(Locale.forLanguageTag("ko"))
 
@@ -68,7 +94,7 @@ class TodoFragment : Fragment() {
 
             for(i in 0..6){
 
-                todocalendarList.apply {
+                todoCalendarList.apply {
                     add(TodoCalendarVO(preSunday.plusDays(i.toLong()).format(dateFormat), week_day[i]))
                 }
 
@@ -80,9 +106,11 @@ class TodoFragment : Fragment() {
         binding.todoWeekRecycler.layoutManager = GridLayoutManager(context, 7)
 
         todoAdapter.setItemClickListener(object : TodoAdapter.OnItemClickListener{
+
             override fun onClick(v: View, position: Int) {
                 Toast.makeText(view.context,"클릭",
                     Toast.LENGTH_SHORT).show()
+
             }
         })
         }
@@ -91,6 +119,10 @@ class TodoFragment : Fragment() {
         super.onDestroy()
         _binding = null
     }
+
+
+
+
 
 }
 

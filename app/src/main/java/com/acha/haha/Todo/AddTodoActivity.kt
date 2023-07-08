@@ -7,7 +7,7 @@ import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import com.acha.haha.R
-import com.acha.haha.R.id.todo_toolbar
+//import com.acha.haha.R.id.todo_toolbar
 
 class AddTodoActivity : AppCompatActivity() {
 
@@ -16,10 +16,10 @@ class AddTodoActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_plus_todo)
 
-        val todo_toolbar = findViewById<Toolbar>(R.id.todo_toolbar)
-        setSupportActionBar(todo_toolbar)
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        supportActionBar?.setDisplayShowTitleEnabled(false)
+//        val todo_toolbar = findViewById<Toolbar>(R.id.todo_toolbar)
+//        setSupportActionBar(todo_toolbar)
+//        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+//        supportActionBar?.setDisplayShowTitleEnabled(false)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
